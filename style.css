@@ -1,0 +1,180 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", Segoe UI Symbol, "Noto Color Emoji";
+}
+
+main{
+    display: flex;
+}
+
+.allComments{
+    width: 50%;
+}
+.top{
+    padding: 20px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70vw;
+}
+.blue{
+    background-color: #1DA1F2;
+    display: flex;
+    justify-content: center;
+}
+.search{
+    display: flex;
+    font-size: 20px;
+    align-items: center;
+    /* background-color: aqua; */
+    width: 50%;
+}
+.clone{
+    font-size: 20px;
+}
+
+.clone ion-icon{
+    margin-right: 20px;
+}
+
+select{
+    padding: 10px 20px;
+    margin-left: 10px;
+    font-size: 17px;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.top2{
+    height: 200px;
+    background-image: url('./images/backgroundCover.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-size: 100% 200px;
+    margin-bottom: 90px;
+    
+}
+
+.top2 img{
+    height: 170px;
+    width: 170px;
+    border-radius: 50%;
+    padding: 90px 30px;
+}
+.name{
+    font-size: 20px;
+    font-weight: 600;
+}
+.userInfo{
+    padding: 0px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+.location{
+    display: flex;
+    gap: 10px;
+}
+.userName{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.userName ion-icon{
+    color: #03A9F4;
+}
+.posts{
+    width: 50%;
+    display: flex;
+    margin-left:30px ;
+    gap: 20px;
+    /* flex-direction: ; */
+}
+.photo img{
+    width: 100%;
+    height: 100%;
+    /* padding: 0px 20px; */
+    /* border: 1px solid black; */
+    border-radius: 20px;
+}
+
+.reactions, .comments, .retweets, .likes{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.reactions{
+    gap: 30px;
+}
+
+.postContent{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding-top: 5px;
+    /* justify-content: center; */
+}
+
+.likes ion-icon{
+    color: red;
+}
+
+.allPosts{
+    /* background-color: #03A9F4; */
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+/* Comments */
+.allComments {
+    /* background-color: #03A9F4; Background color similar to posts */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.comment {
+    display: flex;
+    gap: 20px;
+}
+
+.comment .photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    /* overflow: hidden; Ensure photo doesn't exceed boundaries */
+}
+
+.comment .photo img {
+    width: 100%;
+    height: 100%;
+}
+
+.comment .postContent {
+    flex: 1;
+}
+
+.comment .userName {
+    font-weight: bold;
+    color: white; /* Username color similar to posts */
+}
+
+.comment .posted {
+    color: white; /* Post text color similar to posts */
+}
+
+.comment .reactions {
+    display: flex;
+    gap: 10px;
+    color: rgb(0, 0, 0); /* Reaction count color similar to posts */
+}
+
+.comment .reactions ion-icon {
+    color: rgb(255, 0, 0); /* Reaction icon color similar to posts */
+}
