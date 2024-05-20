@@ -1,4 +1,6 @@
-// Function to create user info elements
+let allPosts = document.querySelector('.allPosts');
+
+// Function to create user info elements on load
 function createUserInfoElements(userData) {
     let userInfoDiv = document.querySelector('.userInfo');
     userInfoDiv.innerHTML = ''; // Clear previous user info
@@ -49,9 +51,11 @@ function createPostElements(postData, userName) {
     let userNameDiv = document.createElement('div');
     userNameDiv.classList.add('userName');
     userNameDiv.textContent = userName;
+
     let shieldIcon = document.createElement('ion-icon');
     shieldIcon.setAttribute('name', 'shield-checkmark-outline');
     userNameDiv.appendChild(shieldIcon);
+
     let twitterIcon = document.createElement('ion-icon');
     twitterIcon.setAttribute('name', 'logo-twitter');
     userNameDiv.appendChild(twitterIcon);
@@ -65,16 +69,45 @@ function createPostElements(postData, userName) {
 
     let reactions = document.createElement('div');
     reactions.classList.add('reactions');
+
+    //comments
     let comments = document.createElement('div');
     comments.classList.add('comments');
     let commentIcon = document.createElement('ion-icon');
     commentIcon.setAttribute('name', 'chatbubble-ellipses-outline');
     comments.appendChild(commentIcon);
     let commentCount = document.createElement('p');
-    commentCount.textContent = '200'; // Set the actual comment count if available
+    commentCount.textContent = '200';
     comments.appendChild(commentCount);
 
+    //retweets
+    let retweets = document.createElement('div');
+    retweets.classList.add('retweets');
+    let retweetsIcon = document.createElement('ion-icon');
+    retweetsIcon.setAttribute('name', 'repeat-outline');
+    retweets.appendChild(retweetsIcon);
+    let retweetCount = document.createElement('p');
+    retweetCount.textContent = '200';
+    retweets.appendChild(retweetCount);
+
+
+
+    //likes
+    let likes = document.createElement('div');
+    likes.classList.add('likes');
+    let likesIcon = document.createElement('ion-icon');
+    likesIcon.setAttribute('name', 'heart');
+    likes.appendChild(likesIcon);
+    let likesCount = document.createElement('p');
+    likesCount.textContent = '200'; // Set the actual comment count if available
+    likes.appendChild(likesCount);
+    // likes.appendChild(likesCount);
+
+
     reactions.appendChild(comments);
+    reactions.appendChild(retweets);
+    reactions.append(likes);
+
 
     postContent.appendChild(userNameDiv);
     postContent.appendChild(posted);
@@ -86,6 +119,8 @@ function createPostElements(postData, userName) {
     return post;
 }
 
+
+
 // Function to create comment elements
 function createCommentElements(commentData) {
     let comment = document.createElement('div');
@@ -93,6 +128,8 @@ function createCommentElements(commentData) {
 
     let photo = document.createElement('div');
     photo.classList.add('photo');
+    photo.className = ('photoc');
+
     let img = document.createElement('img');
     img.src = './images/profile-picture.jfif';
     img.alt = '';
@@ -105,22 +142,67 @@ function createCommentElements(commentData) {
     nameDiv.classList.add('commentName');
     nameDiv.textContent = commentData.name;
 
+    /////
+
+
+    let shieldIcon = document.createElement('ion-icon');
+    shieldIcon.setAttribute('name', 'shield-checkmark-outline');
+    // userNameDiv.appendChild(shieldIcon);
+
+    let twitterIcon = document.createElement('ion-icon');
+    twitterIcon.setAttribute('name', 'logo-twitter');
+    // userNameDiv.appendChild(twitterIcon);
+
+
+    ////
+
     let bodyDiv = document.createElement('div');
     bodyDiv.classList.add('commentBody');
     bodyDiv.textContent = commentData.body;
-
     let reactionsDiv = document.createElement('div');
     reactionsDiv.classList.add('reactions');
+
+    //LIKE
     let likesDiv = document.createElement('div');
     likesDiv.classList.add('likes');
+    likesDiv.className = 'likes';
     let likeIcon = document.createElement('ion-icon');
     likeIcon.setAttribute('name', 'heart');
     likesDiv.appendChild(likeIcon);
     let likesCount = document.createElement('p');
-    likesCount.textContent = '200'; // Set the actual like count if available
+    likesCount.textContent = '200';
     likesDiv.appendChild(likesCount);
 
+
+
+    //comments
+    let commentsDiv = document.createElement('div');
+    commentsDiv.classList.add('comments');
+    let commentIcon = document.createElement('ion-icon');
+    commentIcon.setAttribute('name', 'chatbubble-ellipses-outline');
+    commentsDiv.appendChild(commentIcon);
+    let commentCount = document.createElement('p');
+    commentCount.textContent = '200';
+    commentsDiv.appendChild(commentCount);
+
+    //retweets
+    let retweets = document.createElement('div');
+    retweets.classList.add('retweets');
+    let retweetsIcon = document.createElement('ion-icon');
+    retweetsIcon.setAttribute('name', 'repeat-outline');
+    retweets.appendChild(retweetsIcon);
+    let retweetCount = document.createElement('p');
+    retweetCount.textContent = '200';
+    retweets.appendChild(retweetCount);
+
+    reactionsDiv.appendChild(commentsDiv);
+    reactionsDiv.appendChild(retweets);
     reactionsDiv.appendChild(likesDiv);
+
+    nameDiv.appendChild(shieldIcon);
+    nameDiv.appendChild(twitterIcon);
+
+
 
     commentContent.appendChild(nameDiv);
     commentContent.appendChild(bodyDiv);
@@ -132,7 +214,7 @@ function createCommentElements(commentData) {
     return comment;
 }
 
-// Fetch user data and populate select dropdown
+// Fetching user data and populate select dropdownlist //select element 
 fetch('https://jsonplaceholder.typicode.com/users')
     .then(result => result.json())
     .then(userData => {
@@ -153,12 +235,13 @@ fetch('https://jsonplaceholder.typicode.com/users')
 
             // Create user info elements
             createUserInfoElements(selectedUserData);
+            
 
             // Fetch posts for selected user
             fetch(`https://jsonplaceholder.typicode.com/posts?userId=${selectedUserId}`)
                 .then(result => result.json())
                 .then(postsData => {
-                    let allPosts = document.querySelector('.allPosts');
+                    
                     allPosts.innerHTML = ''; // Clear previous posts
 
                     // Create post elements and append to allPosts container
@@ -169,15 +252,43 @@ fetch('https://jsonplaceholder.typicode.com/users')
                 })
                 .catch(error => console.error('Error fetching posts:', error));
         });
+
+        ///////////////////////////////////
+        //funtion to load user 01 posts on load by default
+
+        fetch(`https://jsonplaceholder.typicode.com/posts?userId=${1}`)
+                .then(result => result.json())
+                .then(postsData => {
+                    
+                    allPosts.innerHTML = ''; // Clear previous posts
+
+                    // Create post elements and append to allPosts container
+                    postsData.forEach(post => {
+                        let postElement = createPostElements(post, 'Leanne Graham');
+                        allPosts.appendChild(postElement);
+                    });
+                })
+                .catch(error => console.error('Error fetching posts:', error));
+        ////////////////////////////
     });
 
 
-    // Generate comments section heading
+// Generate comments section heading
 function createCommentsHeading(postId) {
-    let heading = document.createElement('div');
+    let commentsHeading = document.querySelector('.commentsHeading');
+    commentsHeading.innerHTML = '';
+    let heading = document.createElement('p');
+    heading.textContent = `post ${postId} comments`;
     heading.classList.add('commentsHeading');
-    heading.textContent = `Post ${postId} Comments`;
-    return heading;
+    console.log('function called');
+    console.log(postId);
+    console.log(heading)
+    // commentsSection.appendChild(heading);
+    
+        // heading.textContent = postId;
+        commentsHeading.appendChild(heading);
+
+    // return heading;
 }
 
 
@@ -190,18 +301,42 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!postElement) return; // Exit if the clicked element is not a post
 
         let postId = postElement.dataset.postId;
+        createCommentsHeading(postId);
 
         fetch(`https://jsonplaceholder.typicode.com/comments?postId=${postId}`)
             .then(response => response.json())
             .then(commentsData => {
                 let allComments = document.querySelector('.allComments');
-                allComments.innerHTML = ''; // Clear previous comments
+                allComments.innerHTML = ''; // Clearing previous comments
 
                 commentsData.forEach(comment => {
                     let commentElement = createCommentElements(comment);
+                    
                     allComments.appendChild(commentElement);
                 });
             })
             .catch(error => console.error('Error fetching comments:', error));
     });
+
+    // ///////////////////////////////////////
+    // loading comments on load in post id 1
+    fetch(`https://jsonplaceholder.typicode.com/comments?postId=${1}`)
+            .then(response => response.json())
+            .then(commentsData => {
+                let allComments = document.querySelector('.allComments');
+                allComments.innerHTML = ''; // Clear previous comments
+
+                console.log(commentsData);
+                createCommentsHeading(1);
+
+                commentsData.forEach(comment => {
+                    let commentElement = createCommentElements(comment);
+                    
+                    allComments.appendChild(commentElement)
+                });
+            })
+            .catch(error => console.error('Error fetching comments:', error));
+
+
+
 });
