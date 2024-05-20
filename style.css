@@ -91,7 +91,7 @@ select{
     color: #03A9F4;
 }
 .posts{
-    width: 100%;
+    width: 50vw;
     display: flex;
     margin-left:30px ;
     gap: 20px;
@@ -140,8 +140,9 @@ select{
 
 /* Comments */
 .allComments {
-    /* background-color: #03A9F4; Background color similar to posts */
+    /* background-color: #03A9F4;  */
     /* padding: 20px; */
+    width: 90%;
     border-radius: 10px;
     margin-left: 20px;
     display: flex;

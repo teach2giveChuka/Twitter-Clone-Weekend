@@ -170,7 +170,7 @@ function createCommentElements(commentData) {
     likeIcon.setAttribute('name', 'heart');
     likesDiv.appendChild(likeIcon);
     let likesCount = document.createElement('p');
-    likesCount.textContent = '200';
+    likesCount.textContent = '0';
     likesDiv.appendChild(likesCount);
 
 
@@ -182,7 +182,7 @@ function createCommentElements(commentData) {
     commentIcon.setAttribute('name', 'chatbubble-ellipses-outline');
     commentsDiv.appendChild(commentIcon);
     let commentCount = document.createElement('p');
-    commentCount.textContent = '200';
+    commentCount.textContent = '0';
     commentsDiv.appendChild(commentCount);
 
     //retweets
@@ -192,7 +192,7 @@ function createCommentElements(commentData) {
     retweetsIcon.setAttribute('name', 'repeat-outline');
     retweets.appendChild(retweetsIcon);
     let retweetCount = document.createElement('p');
-    retweetCount.textContent = '200';
+    retweetCount.textContent = '0';
     retweets.appendChild(retweetCount);
 
     reactionsDiv.appendChild(commentsDiv);
