@@ -20,6 +20,8 @@ On selecting a Post show all its comments. (by default, display comments for pos
 
 DEMO https://twitter-signals-7iou.vercel.app/
 
+##My Solution
+
 ### Screenshot
 
 ![Component Screenshot](./images/screenshot.PNG)
